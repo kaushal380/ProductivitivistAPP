@@ -1,5 +1,3 @@
-// In App.js in a new project
-
 // import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
@@ -10,7 +8,6 @@ import LoginScreen from './screens/loginsScreens/LoginScreen';
 import DrawerNav from './routing/DrawerNav';
 // import Home from './screens/Home';
 import SignupScreen from './screens/loginsScreens/SignupScreen';
-import BottomTab from './routing/BottamTab';
 const Stack = createNativeStackNavigator();
 
 export default function loginUI() {
@@ -24,3 +21,4 @@ export default function loginUI() {
   </NavigationContainer> 
   );
 }
+

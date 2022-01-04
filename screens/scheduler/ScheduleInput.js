@@ -18,9 +18,10 @@ import {
 } from '../../styles/AppStyles'
 
 import {AntDesign} from "@expo/vector-icons"
-import DateTimePickerModal from "react-native-modal-datetime-picker";
+// import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { TapGestureHandler } from 'react-native-gesture-handler';
-
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 
 const InputModal = ({
@@ -56,27 +57,38 @@ const InputModal = ({
     const [isTimeFrom, setIsTimeFrom] = useState(false)
 
 
-    const handleConfirmFrom = (selectedTime) => {
-
+    const handleConfirmFrom = ( selectedTime) => {
+        setIsTimeFrom(false)
         const time = new Date(selectedTime)
-        const hours = time.getHours()
-        const minutes = time.getMinutes()
+        let hours = time.getHours()
+        let minutes = time.getMinutes()
         const fromNumMin = (hours*60) + minutes
+        if(hours < 10){
+            hours = "0" + hours
+        }
+        if(minutes < 10){
+            minutes = "0" + minutes
+        }
         const format = hours + ":" + minutes
         setRoutineFrom(format)
         setFromNum(fromNumMin)
-        setIsTimeFrom(false)
     }
 
     const handleConfirmTo = (selectedTime) => {
+        setIsTimeTo(false)
         const time = new Date(selectedTime)
-        const hours = time.getHours()
-        const minutes = time.getMinutes()
+        let hours = time.getHours()
+        let minutes = time.getMinutes()
         const toNumMin = (hours*60) + minutes
+        if(hours < 10){
+            hours = "0" + hours
+        }
+        if(minutes < 10){
+            minutes = "0" + minutes
+        }
         const format = hours + ":" + minutes
         setRoutineTo(format)
         setToNum(toNumMin)
-        setIsTimeTo(false)
     }
 
     const hideTimePicker = () => {
@@ -172,7 +184,7 @@ const InputModal = ({
                     </ModalIcon>
 
                     <StyledInput
-                        placeholder = "title: Add a routine"
+                        placeholder = "title: Add a task"
                         placeholderTextColor = {colors.alternative}
                         selectionColor = {colors.secondary}
                         autoFocus = {true}
@@ -206,20 +218,20 @@ const InputModal = ({
                     <AntDesign name = "clockcircle" size = {35} color={colors.tertiary} onPress = {() => {setIsTimeTo(true)}}/>
                     </ModalLeftview>
          
-                    
+                    <DateTimePickerModal
+                        isVisible = {isTimeTo}
+                        mode='time'
+                        onConfirm = {(date) => {handleConfirmTo(date)}}
+                        onCancel = {hideTimePicker} 
+                    />
+                    <DateTimePickerModal
+                        isVisible = {isTimeFrom}
+                        mode='time'
+                        onConfirm = {(date)=> {handleConfirmFrom(date)}}
+                        onCancel = {hideTimePicker}
+                    />
 
-                    <DateTimePickerModal
-                        isVisible={isTimeTo}
-                        mode= "time"
-                        onConfirm={(Time) => handleConfirmTo(Time)}
-                        onCancel={hideTimePicker}
-                    />
-                    <DateTimePickerModal
-                        isVisible={isTimeFrom}
-                        mode= "time"
-                        onConfirm={(Time) => handleConfirmFrom(Time)}
-                        onCancel={hideTimePicker}
-                    />
+
                     <ModalActionGroup>
                         <ModalAction color = {colors.primary} onPress = {handleCloseModal}>
                             <AntDesign name = "close" size = {28} color={colors.tertiary}/>

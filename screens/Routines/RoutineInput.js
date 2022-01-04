@@ -18,7 +18,8 @@ import {
 } from '../../styles/AppStyles'
 
 import {AntDesign} from "@expo/vector-icons"
-import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { TapGestureHandler } from 'react-native-gesture-handler';
 
 
@@ -57,7 +58,7 @@ const InputModal = ({
 
 
     const handleConfirmFrom = (selectedTime) => {
-
+        setIsTimeFrom(false)
         const time = new Date(selectedTime)
         let hours = time.getHours()
         let minutes = time.getMinutes()
@@ -71,10 +72,11 @@ const InputModal = ({
         const format = hours + ":" + minutes
         setRoutineFrom(format)
         setFromNum(fromNumMin)
-        setIsTimeFrom(false)
+        
     }
 
     const handleConfirmTo = (selectedTime) => {
+        setIsTimeTo(false)
         const time = new Date(selectedTime)
         let hours = time.getHours()
         let minutes = time.getMinutes()
@@ -88,7 +90,7 @@ const InputModal = ({
         const format = hours + ":" + minutes
         setRoutineTo(format)
         setToNum(toNumMin)
-        setIsTimeTo(false)
+        
     }
 
     const hideTimePicker = () => {
@@ -219,19 +221,20 @@ const InputModal = ({
                     </ModalLeftview>
          
                     
+                    <DateTimePickerModal
+                        isVisible = {isTimeTo}
+                        mode='time'
+                        onConfirm = {(date) => {handleConfirmTo(date)}}
+                        onCancel = {hideTimePicker} 
+                    />
+                    <DateTimePickerModal
+                        isVisible = {isTimeFrom}
+                        mode='time'
+                        onConfirm = {(date)=> {handleConfirmFrom(date)}}
+                        onCancel = {hideTimePicker}
+                    />
 
-                    <DateTimePickerModal
-                        isVisible={isTimeTo}
-                        mode= "time"
-                        onConfirm={(Time) => handleConfirmTo(Time)}
-                        onCancel={hideTimePicker}
-                    />
-                    <DateTimePickerModal
-                        isVisible={isTimeFrom}
-                        mode= "time"
-                        onConfirm={(Time) => handleConfirmFrom(Time)}
-                        onCancel={hideTimePicker}
-                    />
+
                     <ModalActionGroup>
                         <ModalAction color = {colors.primary} onPress = {handleCloseModal}>
                             <AntDesign name = "close" size = {28} color={colors.tertiary}/>

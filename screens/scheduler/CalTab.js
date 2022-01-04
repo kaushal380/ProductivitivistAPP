@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { View, useWindowDimensions, StyleSheet } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import todo from './Todo';
-import ShortMaker from './TodoShortTerm/ShortMaker';
+import CalendarDisplay from './CalendarDisplay';
+import Scheduler from './Scheduler';
 import { colors } from '../../styles/AppStyles';
 
 const renderScene = SceneMap({
-  first: ShortMaker,
-  second: todo,
+  first: CalendarDisplay,
+  second: Scheduler,
 });
 
 const renderTabBar = props => (
@@ -24,8 +24,8 @@ export default function TabViewExample() {
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'Appointments' },
-    { key: 'second', title: 'Tasks' },
+    { key: 'first', title: 'calendar view' },
+    { key: 'second', title: 'list view' },
   ]);
 
   return (

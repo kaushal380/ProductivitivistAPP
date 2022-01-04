@@ -4,25 +4,31 @@
     dependencies for this project
 
 1) npm install @react-navigation/native
-2) npm install react-native-screens react-native-safe-area-context
-3) npm install @react-navigation/native-stack
-4) npm install @react-navigation/drawer
-5) npm install react-native-gesture-handler react-native-reanimated
+2) expo install react-native-screens react-native-safe-area-context
+3) expo install @react-navigation/native-stack
+4) expo install @react-navigation/drawer
+5) expo install react-native-gesture-handler react-native-reanimated
 6) expo install expo-sqlite
 7) expo install styled-components expo-constants
 8) expo install react-native-swipe-list-view
 9) expo install react-native-modal-datetime-picker 
-10) expo install @react-native-community/datetimepicker
-10) npm add firebase
-11) expo install @react-navigation/bottom-tabs
-12) npm i --save-exact native-base@2.13.8
+10) expo install @react-native-community/datetimepicker: https://www.npmjs.com/package/@react-native-community/datetimepicker#expo-users-notice
+
+11) npm add firebase
+12) expo install @react-navigation/bottom-tabs
+---------------------------------------------------
 13) expo install react-native-svg
 14) npm install @react-native-community/slider --save
-
+15) npm install native-base: https://docs.nativebase.io/slider
+16) npm install react-native-elements : https://reactnativeelements.com/docs/tabview
+17) npm i react-native-events-calendar: https://www.npmjs.com/package/react-native-events-calendar
+18) npm add react-native-tab-view : https://www.npmjs.com/package/react-native-tab-view
+19) expo install react-native-pager-view
+20) expo install react-native-date-picker expo-dev-client :  https://nicedoc.io/henninghall/react-native-date-picker
+21) npm uninstall react-native-number-please: https://www.npmjs.com/package/react-native-number-please
+22) npm install react-datepicker --save: https://reactdatepicker.com/#example-select-time
+23) expo install react-native-modal-datetime-picker@10.0.0
+    - update the package.json file if it doesn't do it automatically
 
 --> add from and to in the todo as well
-
-
-
-
 
