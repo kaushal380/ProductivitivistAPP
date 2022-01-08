@@ -11,7 +11,9 @@ import SignupScreen from './screens/loginsScreens/SignupScreen';
 const Stack = createNativeStackNavigator();
 
 export default function loginUI() {
+
   LogBox.ignoreAllLogs(true);
+
   return(
   <NavigationContainer>
     <Stack.Navigator>
